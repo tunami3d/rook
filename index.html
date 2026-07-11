@@ -286,6 +286,22 @@
   .deploy-bar { width: 200px; height: 3px; background: var(--border); position: relative; }
   .deploy-bar-fill { position: absolute; inset: 0 auto 0 0; background: var(--gold); width: 0%; }
 
+  /* ═══ GRAPHIC SYSTEM ═══ */
+  .decal-section { background: var(--surface); border-top: 1px solid var(--border); }
+  .decal-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 3px; }
+  .decal-cell {
+    background: var(--panel); border: 1px solid var(--border);
+    padding: 22px 16px 14px; min-height: 158px;
+    display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 14px;
+    transition: border-color 0.25s;
+  }
+  .decal-cell:hover { border-color: var(--gold-dim); }
+  .decal-cell img { max-width: 100%; max-height: 66px; object-fit: contain; flex: 1; }
+  .decal-name { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--muted); letter-spacing: 1.5px; text-align: center; }
+  .decal-foot { margin-top: 3px; background: var(--panel); border: 1px solid var(--border); padding: 16px 22px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .decal-foot span { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--grey); letter-spacing: 2px; }
+  .decal-foot b { color: var(--gold); font-weight: 500; }
+
   /* ═══ DESIGNER ═══ */
   .about-section { background: var(--surface); border-top: 1px solid var(--border); }
   .about-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: start; }
@@ -343,6 +359,7 @@
     .bay-grid { grid-template-columns: 1fr 1fr; }
     .vid-grid { grid-template-columns: 1fr; }
     .deploy-track { grid-template-columns: 1fr 1fr; }
+    .decal-grid { grid-template-columns: repeat(2, 1fr); }
     .contact-section { padding: 70px 22px; }
     footer { padding: 24px 22px; }
   }
@@ -616,10 +633,54 @@
   </div>
 </section>
 
+<!-- GRAPHIC SYSTEM -->
+<section id="decals" class="decal-section">
+  <div class="sec-head reveal">
+    <div class="sec-num">05</div>
+    <div>
+      <div class="sec-eyebrow">GRAPHIC SYSTEM · REV 02</div>
+      <div class="sec-title">Functional. Minimal.<br><em>Purposeful.</em></div>
+    </div>
+  </div>
+  <div class="decal-grid reveal">
+    <div class="decal-cell"><img src="assets/decals/identity_rook_wordmark_white.svg" alt="ROOK wordmark"><span class="decal-name">ROOK IDENTITY</span></div>
+    <div class="decal-cell"><img src="assets/decals/identity_a03_unit.svg" alt="A03 unit"><span class="decal-name">A03 UNIT MARK</span></div>
+    <div class="decal-cell"><img src="assets/decals/plate_a03_rev.svg" alt="A03 rev plate"><span class="decal-name">REVISION PLATE</span></div>
+    <div class="decal-cell"><img src="assets/decals/sideband_rook_a03.svg" alt="ROOK sideband"><span class="decal-name">ROOK SIDEBAND</span></div>
+    <div class="decal-cell"><img src="assets/decals/sideband_hazard_a03.svg" alt="hazard sideband"><span class="decal-name">HAZARD SIDEBAND</span></div>
+    <div class="decal-cell"><img src="assets/decals/func_lift_point.svg" alt="lift point"><span class="decal-name">LIFT POINT</span></div>
+
+    <div class="decal-cell"><img src="assets/decals/bay_marker_01.svg" alt="ghost dock 01"><span class="decal-name">GHOST DOCK 01</span></div>
+    <div class="decal-cell"><img src="assets/decals/bay_marker_02.svg" alt="ghost dock 02"><span class="decal-name">GHOST DOCK 02</span></div>
+    <div class="decal-cell"><img src="assets/decals/bay_marker_03.svg" alt="ghost dock 03"><span class="decal-name">GHOST DOCK 03</span></div>
+    <div class="decal-cell"><img src="assets/decals/bay_marker_04.svg" alt="ghost dock 04"><span class="decal-name">GHOST DOCK 04</span></div>
+    <div class="decal-cell"><img src="assets/decals/dock_align_front.svg" alt="align front"><span class="decal-name">ALIGN FRONT</span></div>
+    <div class="decal-cell"><img src="assets/decals/dock_locked.svg" alt="locked"><span class="decal-name">LOCKED</span></div>
+
+    <div class="decal-cell"><img src="assets/decals/warn_hot_surface.svg" alt="hot surface"><span class="decal-name">HOT SURFACE</span></div>
+    <div class="decal-cell"><img src="assets/decals/warn_pinch_point.svg" alt="pinch point"><span class="decal-name">PINCH POINT</span></div>
+    <div class="decal-cell"><img src="assets/decals/warn_high_voltage.svg" alt="high voltage"><span class="decal-name">HIGH VOLTAGE</span></div>
+    <div class="decal-cell"><img src="assets/decals/warn_moving_parts.svg" alt="moving parts"><span class="decal-name">MOVING PARTS</span></div>
+    <div class="decal-cell"><img src="assets/decals/hazard_danger_red.svg" alt="danger critical"><span class="decal-name">DANGER / CRITICAL</span></div>
+    <div class="decal-cell"><img src="assets/decals/hazard_nostep_white.svg" alt="no step"><span class="decal-name">NO STEP / HAZARD</span></div>
+
+    <div class="decal-cell"><img src="assets/decals/syslabel_mtr_04.svg" alt="drive label"><span class="decal-name">SYS · DRIVE</span></div>
+    <div class="decal-cell"><img src="assets/decals/syslabel_sys_04.svg" alt="suspension label"><span class="decal-name">SYS · SUSPENSION</span></div>
+    <div class="decal-cell"><img src="assets/decals/syslabel_com_01.svg" alt="comms label"><span class="decal-name">SYS · COMMS</span></div>
+    <div class="decal-cell"><img src="assets/decals/syslabel_core.svg" alt="mission core label"><span class="decal-name">SYS · MISSION</span></div>
+    <div class="decal-cell"><img src="assets/decals/sideband_lfp_01.svg" alt="LFP-01 band"><span class="decal-name">LFP-01 BAND</span></div>
+    <div class="decal-cell"><img src="assets/decals/sideband_pwr_02.svg" alt="PWR-02 band"><span class="decal-name">PWR-02 BAND</span></div>
+  </div>
+  <div class="decal-foot reveal">
+    <span>FULL SYSTEM // <b>67 VECTOR MARKS</b> — IDENTITY · SYSTEM LABELS · DOCKING · WARNINGS · STATUS</span>
+    <span>APPLIED ACROSS HULL, BAY &amp; PAYLOAD MODULES</span>
+  </div>
+</section>
+
 <!-- PROJECT SCOPE -->
 <section id="about" class="about-section">
   <div class="sec-head reveal">
-    <div class="sec-num">05</div>
+    <div class="sec-num">06</div>
     <div>
       <div class="sec-eyebrow">PROJECT SCOPE</div>
       <div class="sec-title">Concept to communication.<br><em>End to end.</em></div>
