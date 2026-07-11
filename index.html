@@ -148,6 +148,24 @@
   .ticker span { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; color: #0B0800; letter-spacing: 2px; }
   @keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
+  /* ═══ SCRUB WALKAROUND ═══ */
+  .scrub-wrap { height: 300vh; position: relative; background: #000; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .scrub-sticky { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+  .scrub-sticky canvas { width: 100%; height: 100%; display: block; }
+  .scrub-hud {
+    position: absolute; top: 80px; left: 32px; z-index: 5;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 2px; color: var(--gold);
+    background: rgba(6,7,8,0.6); border: 1px solid var(--gold-dim); padding: 6px 12px;
+  }
+  .scrub-cue {
+    position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); z-index: 5;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 3px; color: var(--grey);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .scrub-cue::before, .scrub-cue::after { content: ''; width: 28px; height: 1px; background: var(--gold-dim); }
+  .scrub-track { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: rgba(29,34,43,0.6); z-index: 5; }
+  .scrub-fill { height: 100%; width: 0%; background: var(--gold); }
+
   /* ═══ SECTIONS ═══ */
   section { padding: 96px 56px; position: relative; }
   .sec-head { display: flex; align-items: flex-start; gap: 24px; margin-bottom: 48px; }
@@ -217,8 +235,8 @@
     padding: 4px 10px;
   }
   .vid-tag b { color: var(--gold); font-weight: 700; }
-  .vid-rec { position: absolute; top: 12px; right: 12px; z-index: 3; display: flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 1.5px; color: var(--grey); background: rgba(6,7,8,0.78); padding: 4px 10px; border: 1px solid var(--border-hi); }
-  .vid-rec::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--red); animation: rec 1.6s ease-in-out infinite; }
+  .vid-rec { position: absolute; top: 14px; right: 14px; z-index: 3; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; background: rgba(6,7,8,0.78); border: 1px solid var(--border-hi); border-radius: 50%; }
+  .vid-rec::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--red); animation: rec 1.6s ease-in-out infinite; }
   @keyframes rec { 0%,100%{opacity:1} 50%{opacity:0.15} }
 
   /* ═══ SPECS ═══ */
@@ -340,10 +358,9 @@
     <span class="nav-title">ROOK<span>_</span></span>
   </div>
   <div class="nav-links">
+    <a href="#motion">MOTION</a>
     <a href="#origin">MISSION</a>
     <a href="#gallery">VISUAL</a>
-    <a href="#motion">MOTION</a>
-    <a href="#specs">SPEC</a>
     <a href="#bay">SYSTEMS</a>
     <a href="#contact">CONTACT</a>
   </div>
@@ -386,6 +403,16 @@
   </div>
 </div>
 
+<!-- SCRUB WALKAROUND -->
+<div class="scrub-wrap" id="scrubWrap">
+  <div class="scrub-sticky">
+    <canvas id="scrubCanvas"></canvas>
+    <div class="scrub-hud">A03 // WALKAROUND — SCROLL TO ORBIT</div>
+    <div class="scrub-cue">SCROLL</div>
+    <div class="scrub-track"><div class="scrub-fill" id="scrubFill"></div></div>
+  </div>
+</div>
+
 <!-- MOTION — first, Anduril style -->
 <section id="motion" class="motion-section">
   <div class="sec-head reveal">
@@ -399,22 +426,22 @@
     <div class="vid-cell">
       <video muted loop playsinline preload="metadata" src="assets/vid/open.mp4"></video>
       <span class="vid-tag"><b>M-01</b> // BAY OPEN SEQUENCE</span>
-      <span class="vid-rec">LIVE</span>
+      <span class="vid-rec"></span>
     </div>
     <div class="vid-cell">
       <video muted loop playsinline preload="metadata" src="assets/vid/terrain.mp4"></video>
       <span class="vid-tag"><b>M-02</b> // TERRAIN TRAVERSE</span>
-      <span class="vid-rec">LIVE</span>
+      <span class="vid-rec"></span>
     </div>
     <div class="vid-cell">
       <video muted loop playsinline preload="metadata" src="assets/vid/soldier.mp4"></video>
       <span class="vid-tag"><b>M-03</b> // DISMOUNT ESCORT</span>
-      <span class="vid-rec">LIVE</span>
+      <span class="vid-rec"></span>
     </div>
     <div class="vid-cell">
       <video muted loop playsinline preload="metadata" src="assets/vid/stop.mp4"></video>
       <span class="vid-tag"><b>M-04</b> // HALT &amp; DEPLOY</span>
-      <span class="vid-rec">LIVE</span>
+      <span class="vid-rec"></span>
     </div>
   </div>
 </section>
@@ -425,30 +452,39 @@
     <div class="sec-num">02</div>
     <div>
       <div class="sec-eyebrow">NAME ORIGIN · ROLE IN THE MISSION</div>
-      <div class="sec-title">Strength. Protection. Mobility.<br><em>Strategic support.</em></div>
+      <div class="sec-title">Strength. Protection.<br><em>Mobility.</em></div>
     </div>
   </div>
 
   <div class="origin-grid reveal">
     <div class="origin-chess">
       <div class="chess-frame">
-        <svg width="120" height="150" viewBox="0 0 120 150" fill="none">
-          <path d="M28 22 L28 42 L40 42 L40 34 L52 34 L52 42 L68 42 L68 34 L80 34 L80 42 L92 42 L92 22 L80 22 L80 14 L40 14 L40 22 Z
-                   M40 42 L44 62 L40 112 L80 112 L76 62 L80 42 Z
-                   M30 112 L90 112 L90 124 L30 124 Z
-                   M22 124 L98 124 L98 138 L22 138 Z"
-                stroke="#EDEFF4" stroke-width="2.5" stroke-linejoin="round" fill="none"/>
+        <svg width="120" height="150" viewBox="0 0 120 150" fill="none" stroke="#EDEFF4" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+          <!-- battlements -->
+          <path d="M34 14 L34 34 L46 34 L46 24 L54 24 L54 34 L66 34 L66 24 L74 24 L74 34 L86 34 L86 14 L74 14 L74 20 L66 20 L66 14 L54 14 L54 20 L46 20 L46 14 Z"/>
+          <!-- collar -->
+          <path d="M38 34 L82 34 L78 44 L42 44 Z"/>
+          <!-- body taper -->
+          <path d="M44 44 L46 66 L44 100 L76 100 L74 66 L76 44"/>
+          <!-- body detail lines -->
+          <line x1="47" y1="58" x2="73" y2="58" opacity="0.45"/>
+          <line x1="46" y1="84" x2="74" y2="84" opacity="0.45"/>
+          <!-- base tiers -->
+          <path d="M38 100 L82 100 L86 112 L34 112 Z"/>
+          <path d="M28 112 L92 112 L96 126 L24 126 Z"/>
+          <!-- gold ground line -->
+          <line x1="14" y1="136" x2="106" y2="136" stroke="#D3A017" stroke-width="2"/>
+          <line x1="26" y1="142" x2="94" y2="142" stroke="#D3A017" stroke-width="1" opacity="0.4"/>
         </svg>
       </div>
       <div class="origin-word">ROOK</div>
     </div>
     <div class="origin-body">
       <p>The name <strong>ROOK</strong> is derived from the chess piece. On the board, the rook is a symbol of:</p>
-      <div class="chess-traits">
+      <div class="chess-traits" style="grid-template-columns: repeat(3, auto); justify-content: start; gap: 8px 36px;">
         <span class="trait">STRENGTH</span>
         <span class="trait">PROTECTION</span>
         <span class="trait">MOBILITY</span>
-        <span class="trait">STRATEGIC SUPPORT</span>
       </div>
       <p>Like the rook on the board, this platform provides <strong>a strong, mobile foundation that enables mission success</strong> — an autonomous ground vehicle designed to deploy, recover, and sustain unmanned systems in contested environments.</p>
     </div>
@@ -475,8 +511,8 @@
     </div>
     <div class="role">
       <div class="role-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D3A017" stroke-width="1.5">
-          <path d="M14 4 a5.5 5.5 0 1 0 5.5 8.5 L15 17 l-4 -4 4.5 -4.5 A5.5 5.5 0 0 0 14 4 Z M11 13 L5 19"/>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D3A017" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
         </svg>
       </div>
       <div class="role-title">SUSTAINS OPS</div>
@@ -510,90 +546,19 @@
     <div class="gallery-slide"><img src="assets/img/dirt_soldier.jpg" alt="ROOK dismount escort"><div class="gallery-label"><i>FIELD</i> // DISMOUNT ESCORT · FOLLOW MODE</div></div>
     <div class="gallery-slide"><img src="assets/img/dirt_cargo.jpg" alt="ROOK field resupply"><div class="gallery-label"><i>FIELD</i> // FORWARD RESUPPLY</div></div>
     <div class="gallery-slide"><img src="assets/img/grass_rear.jpg" alt="ROOK overwatch"><div class="gallery-label"><i>FIELD</i> // OVERWATCH POSITION</div></div>
-    <div class="gallery-slide"><img src="assets/img/cargo_01.jpg" alt="ROOK ghost loadout"><div class="gallery-label"><i>PAYLOAD</i> // GHOST LOADOUT · 2× MISSION READY</div></div>
     <div class="gallery-slide"><img src="assets/img/cargo_02.jpg" alt="ROOK payload config"><div class="gallery-label"><i>PAYLOAD</i> // CHARGE RACK · TOOLS · EDGE COMPUTE</div></div>
 
     <div class="gallery-hud-tl">VISUAL RECORD // A03 SERIES</div>
-    <div class="gallery-hud-tr"><b id="gallery-current">01</b> / 09</div>
+    <div class="gallery-hud-tr"><b id="gallery-current">01</b> / 08</div>
     <div class="gallery-dots" id="gallery-dots"></div>
     <div class="gallery-progress" id="gallery-progress"></div>
   </div>
 </div>
 
-<!-- SPECS -->
-<section id="specs">
-  <div class="sec-head reveal">
-    <div class="sec-num">03</div>
-    <div>
-      <div class="sec-eyebrow">TECHNICAL SPECIFICATION</div>
-      <div class="sec-title">Engineered to <em>MUTT 4×4</em> standard.</div>
-    </div>
-  </div>
-  <div class="stat-strip reveal">
-    <div class="stat-card"><div><span class="stat-num" data-count="2134" data-comma="1">0</span><span class="stat-unit">mm</span></div><div class="stat-label">LENGTH · GDLS CONFIRMED</div></div>
-    <div class="stat-card"><div><span class="stat-num" data-count="1524" data-comma="1">0</span><span class="stat-unit">mm</span></div><div class="stat-label">WIDTH · GDLS CONFIRMED</div></div>
-    <div class="stat-card"><div><span class="stat-num" data-count="272">0</span><span class="stat-unit">kg</span></div><div class="stat-label">PAYLOAD CAPACITY</div></div>
-    <div class="stat-card"><div><span class="stat-num" data-count="58">0</span><span class="stat-unit">km</span></div><div class="stat-label">WHEELED RANGE</div></div>
-    <div class="stat-card"><div><span class="stat-num">1.5</span><span class="stat-unit">kW</span></div><div class="stat-label">EXPORT POWER</div></div>
-  </div>
-  <div class="specs-detail reveal">
-    <div class="specs-col">
-      <div class="specs-col-title">VEHICLE // MUTT 4×4 BASE</div>
-      <div class="spec-row"><span class="spec-row-label">Length</span><span class="spec-row-val gold">2,134 mm / 84 in</span></div>
-      <div class="spec-row"><span class="spec-row-label">Width (body)</span><span class="spec-row-val gold">1,524 mm / 60 in</span></div>
-      <div class="spec-row"><span class="spec-row-label">Width (tire to tire)</span><span class="spec-row-val">~1,750 mm est.</span></div>
-      <div class="spec-row"><span class="spec-row-label">Hull height (deck)</span><span class="spec-row-val">~700 mm est.</span></div>
-      <div class="spec-row"><span class="spec-row-label">Total height (closed)</span><span class="spec-row-val">~980 mm est.</span></div>
-      <div class="spec-row"><span class="spec-row-label">Ground clearance</span><span class="spec-row-val">~300 mm est.</span></div>
-      <div class="spec-row"><span class="spec-row-label">Gross vehicle weight</span><span class="spec-row-val">771 kg / 1,700 lb</span></div>
-      <div class="spec-row"><span class="spec-row-label">Max payload</span><span class="spec-row-val gold">272 kg / 600 lb</span></div>
-      <div class="spec-row"><span class="spec-row-label">Drive config</span><span class="spec-row-val gold">4×4 Electric</span></div>
-      <div class="spec-row"><span class="spec-row-label">OS</span><span class="spec-row-val gold">Lattice OS</span></div>
-      <div class="spec-note">
-        <div class="spec-note-title">SOURCE NOTE</div>
-        <div class="spec-note-body">Length / width / weight / payload from GDLS published MUTT 4×4 wheeled specs. Heights and clearance estimated from photo reference.</div>
-      </div>
-    </div>
-    <div class="specs-col">
-      <div class="specs-col-title">GHOST // TRANSPORT CONFIG</div>
-      <div class="spec-row"><span class="spec-row-label">Length (assembled)</span><span class="spec-row-val">2,720 mm</span></div>
-      <div class="spec-row"><span class="spec-row-label">Length (folded)</span><span class="spec-row-val gold">1,100 mm</span></div>
-      <div class="spec-row"><span class="spec-row-label">Width (folded)</span><span class="spec-row-val gold">220 mm</span></div>
-      <div class="spec-row"><span class="spec-row-label">Height (folded)</span><span class="spec-row-val gold">240 mm</span></div>
-      <div class="spec-row"><span class="spec-row-label">Main rotor diameter</span><span class="spec-row-val">2,270 mm</span></div>
-      <div class="spec-row"><span class="spec-row-label">Weight</span><span class="spec-row-val">~9.5 kg</span></div>
-      <div class="spec-row"><span class="spec-row-label">Assembly time</span><span class="spec-row-val gold">~60 sec</span></div>
-      <div class="spec-row"><span class="spec-row-label">Capacity in ROOK</span><span class="spec-row-val gold">2 units</span></div>
-      <div class="spec-note">
-        <div class="spec-note-title">BAY FIT CHECK</div>
-        <div class="spec-note-body">Two Ghosts side-by-side: 440 mm of ~1,200 mm interior width. Folded height 240 mm in 300 mm bay depth — 60 mm reserved for isolation mounts and charge connectors.</div>
-      </div>
-    </div>
-    <div class="specs-col">
-      <div class="specs-col-title">PAYLOAD BUDGET</div>
-      <div class="spec-row"><span class="spec-row-label">Ghost 01 + 02</span><span class="spec-row-val">19 kg</span></div>
-      <div class="spec-row"><span class="spec-row-label">6× battery packs</span><span class="spec-row-val">~30 kg</span></div>
-      <div class="spec-row"><span class="spec-row-label">Tool kit</span><span class="spec-row-val">~10 kg</span></div>
-      <div class="spec-row"><span class="spec-row-label">Edge compute &amp; comms</span><span class="spec-row-val">~15 kg</span></div>
-      <div class="spec-row"><span class="spec-row-label">Bay structure</span><span class="spec-row-val">~40 kg</span></div>
-      <div class="spec-row" style="border-top:1px solid var(--gold-dim); margin-top:6px; padding-top:10px">
-        <span class="spec-row-label" style="color:var(--white)">Total used</span><span class="spec-row-val">~114 kg</span>
-      </div>
-      <div class="spec-row">
-        <span class="spec-row-label" style="color:var(--white)">Remaining margin</span><span class="spec-row-val gold">~158 kg</span>
-      </div>
-      <div class="spec-note">
-        <div class="spec-note-title">AIR TRANSPORT</div>
-        <div class="spec-note-body">V-22 Osprey · 2× internal<br>CH-47 Chinook · 4× internal<br>UH-60 Black Hawk · sling load</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- BAY / SYSTEMS -->
 <section id="bay" class="bay-section">
   <div class="sec-head reveal">
-    <div class="sec-num">04</div>
+    <div class="sec-num">03</div>
     <div>
       <div class="sec-eyebrow">ONBOARD SYSTEMS</div>
       <div class="sec-title">Every millimeter <em>accounted for.</em></div>
@@ -630,7 +595,7 @@
 <!-- DEPLOYMENT -->
 <section>
   <div class="sec-head reveal">
-    <div class="sec-num">05</div>
+    <div class="sec-num">04</div>
     <div>
       <div class="sec-eyebrow">DEPLOYMENT SEQUENCE · AUTO-CYCLING</div>
       <div class="sec-title">Ghost to airborne in <em>90 seconds.</em></div>
@@ -654,7 +619,7 @@
 <!-- PROJECT SCOPE -->
 <section id="about" class="about-section">
   <div class="sec-head reveal">
-    <div class="sec-num">06</div>
+    <div class="sec-num">05</div>
     <div>
       <div class="sec-eyebrow">PROJECT SCOPE</div>
       <div class="sec-title">Concept to communication.<br><em>End to end.</em></div>
@@ -895,33 +860,54 @@
   });
   heroEl.addEventListener('mouseleave', () => { heroImgEl.style.translate = '0px 0px'; });
 
-  /* ── TURNTABLE SCRUB (optional upgrade) ──
-     To enable Anduril-style scroll rotation:
-     1. Render a turntable sequence of the vehicle (60–120 frames, transparent
-        WebP, same framing) named frame_0001.webp, frame_0002.webp, ...
-     2. Put them in assets/img/turntable/
-     3. Set count below to the number of frames.
-     The hero image will scrub through the rotation as the user scrolls. */
-  const TURNTABLE = { path: 'assets/img/turntable/', count: 0, pad: 4, ext: '.webp' };
-  if (TURNTABLE.count > 1) {
-    const frames = [];
-    for (let i = 1; i <= TURNTABLE.count; i++) {
+  /* ── WALKAROUND SCRUB (canvas, scroll-driven) ── */
+  (function() {
+    const COUNT = 81, PATH = 'assets/img/turntable/', PAD = 4, EXT = '.webp';
+    const wrap = document.getElementById('scrubWrap');
+    const canvas = document.getElementById('scrubCanvas');
+    const fill = document.getElementById('scrubFill');
+    if (!wrap || !canvas) return;
+    const ctx = canvas.getContext('2d');
+    const frames = []; let loaded = 0; let curIdx = -1;
+
+    for (let i = 1; i <= COUNT; i++) {
       const im = new Image();
-      im.src = TURNTABLE.path + 'frame_' + String(i).padStart(TURNTABLE.pad, '0') + TURNTABLE.ext;
+      im.src = PATH + 'frame_' + String(i).padStart(PAD, '0') + EXT;
+      im.onload = () => { loaded++; if (i === 1) draw(0); };
       frames.push(im);
     }
-    let lastIdx = -1;
-    window.addEventListener('scroll', () => {
-      const r = heroEl.getBoundingClientRect();
-      const total = r.height + window.innerHeight;
-      const p = Math.min(Math.max((window.innerHeight - r.top) / total, 0), 1);
-      const idx = Math.min(Math.floor(p * TURNTABLE.count), TURNTABLE.count - 1);
-      if (idx !== lastIdx && frames[idx].complete) {
-        heroImgEl.src = frames[idx].src;
-        lastIdx = idx;
-      }
-    }, { passive: true });
-  }
+
+    function sizeCanvas() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = canvas.clientWidth * dpr;
+      canvas.height = canvas.clientHeight * dpr;
+      if (curIdx >= 0) draw(curIdx, true);
+    }
+
+    function draw(idx, force) {
+      if (idx === curIdx && !force) return;
+      const im = frames[idx];
+      if (!im || !im.complete || !im.naturalWidth) return;
+      curIdx = idx;
+      const cw = canvas.width, ch = canvas.height;
+      const s = Math.max(cw / im.naturalWidth, ch / im.naturalHeight);
+      const dw = im.naturalWidth * s, dh = im.naturalHeight * s;
+      ctx.clearRect(0, 0, cw, ch);
+      ctx.drawImage(im, (cw - dw) / 2, (ch - dh) / 2, dw, dh);
+    }
+
+    function onScroll() {
+      const r = wrap.getBoundingClientRect();
+      const total = r.height - window.innerHeight;
+      const p = Math.min(Math.max(-r.top / total, 0), 1);
+      fill.style.width = (p * 100) + '%';
+      draw(Math.min(Math.floor(p * COUNT), COUNT - 1));
+    }
+
+    window.addEventListener('resize', sizeCanvas);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    sizeCanvas(); onScroll();
+  })();
 
   /* ── Barcode ── */
   const bc = document.getElementById('barcode');
