@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ROOK — Autonomous Drone Support Platform · Concept by Michael Altuna</title>
-<meta name="description" content="ROOK A03 — an autonomous 6×6 UGV concept that deploys, recovers, and sustains Anduril Ghost drones in the field. Design study by Michael Altuna.">
+<meta name="description" content="ROOK A03 — an autonomous 4×4 UGV concept that deploys, recovers, and sustains Anduril Ghost drones in the field. Design study by Michael Altuna.">
 <meta property="og:title" content="ROOK — Autonomous Drone Support Platform">
 <meta property="og:description" content="Deploy, recover, and sustain unmanned systems in contested environments. A concept design study.">
 <meta property="og:image" content="assets/img/studio_close.jpg">
@@ -93,7 +93,8 @@
   }
   .hero-stage { position: relative; width: min(1100px, 92%); margin: 0 auto; }
   .hero-vehicle { position: relative; width: 100%; }
-  .hero-vehicle img { width: 100%; height: auto; display: block; filter: drop-shadow(0 40px 60px rgba(0,0,0,0.55)); }
+  .hero-vehicle img { width: 100%; height: auto; display: block; filter: drop-shadow(0 40px 60px rgba(0,0,0,0.55)); animation: heroFloat 7s ease-in-out infinite alternate; will-change: transform; }
+  @keyframes heroFloat { from { transform: translateY(0); } to { transform: translateY(-12px); } }
   .hero-glow {
     position: absolute; left: 50%; bottom: -4%; transform: translateX(-50%);
     width: 80%; height: 30%; border-radius: 50%;
@@ -346,7 +347,7 @@
     <a href="#bay">SYSTEMS</a>
     <a href="#contact">CONTACT</a>
   </div>
-  <span class="nav-doc">DOC <b>ROOK-A03-CS-001</b> REV C</span>
+  <span class="nav-doc">DOC <b>ROOK-A03-CS-001</b> REV D</span>
 </nav>
 
 <!-- HERO -->
@@ -370,8 +371,8 @@
     </div>
     <div class="hero-quick">
       <div class="hq"><div><span class="hq-n" data-count="2" data-suffix="×">0</span><span class="hq-u">GHOST</span></div><div class="hq-l">MISSION-READY</div></div>
-      <div class="hq"><div><span class="hq-n">6×6</span></div><div class="hq-l">ALL-TERRAIN EV</div></div>
-      <div class="hq"><div><span class="hq-n" data-count="408">0</span><span class="hq-u">KG</span></div><div class="hq-l">PAYLOAD</div></div>
+      <div class="hq"><div><span class="hq-n">4×4</span></div><div class="hq-l">ALL-TERRAIN EV</div></div>
+      <div class="hq"><div><span class="hq-n" data-count="272">0</span><span class="hq-u">KG</span></div><div class="hq-l">PAYLOAD</div></div>
       <div class="hq"><div><span class="hq-n" data-count="58">0</span><span class="hq-u">KM</span></div><div class="hq-l">RANGE</div></div>
     </div>
   </div>
@@ -380,15 +381,48 @@
 <!-- TICKER -->
 <div class="ticker">
   <div class="ticker-track">
-    <span>DEPLOY · RECOVER · SUSTAIN</span><span>◆</span><span>MUTT 6×6 CHASSIS</span><span>◆</span><span>2,362 MM LENGTH</span><span>◆</span><span>LATTICE OS NATIVE</span><span>◆</span><span>V-22 AIR TRANSPORTABLE</span><span>◆</span><span>3 KW EXPORT POWER</span><span>◆</span><span>6× BATTERY SIMULTANEOUS CHARGE</span><span>◆</span><span>BUILT FOR THE MISSION</span><span>◆</span>
-    <span>DEPLOY · RECOVER · SUSTAIN</span><span>◆</span><span>MUTT 6×6 CHASSIS</span><span>◆</span><span>2,362 MM LENGTH</span><span>◆</span><span>LATTICE OS NATIVE</span><span>◆</span><span>V-22 AIR TRANSPORTABLE</span><span>◆</span><span>3 KW EXPORT POWER</span><span>◆</span><span>6× BATTERY SIMULTANEOUS CHARGE</span><span>◆</span><span>BUILT FOR THE MISSION</span><span>◆</span>
+    <span>DEPLOY · RECOVER · SUSTAIN</span><span>◆</span><span>MUTT 4×4 CHASSIS</span><span>◆</span><span>2,134 MM LENGTH</span><span>◆</span><span>LATTICE OS NATIVE</span><span>◆</span><span>V-22 AIR TRANSPORTABLE</span><span>◆</span><span>1.5 KW EXPORT POWER</span><span>◆</span><span>6× BATTERY SIMULTANEOUS CHARGE</span><span>◆</span><span>BUILT FOR THE MISSION</span><span>◆</span>
+    <span>DEPLOY · RECOVER · SUSTAIN</span><span>◆</span><span>MUTT 4×4 CHASSIS</span><span>◆</span><span>2,134 MM LENGTH</span><span>◆</span><span>LATTICE OS NATIVE</span><span>◆</span><span>V-22 AIR TRANSPORTABLE</span><span>◆</span><span>1.5 KW EXPORT POWER</span><span>◆</span><span>6× BATTERY SIMULTANEOUS CHARGE</span><span>◆</span><span>BUILT FOR THE MISSION</span><span>◆</span>
   </div>
 </div>
+
+<!-- MOTION — first, Anduril style -->
+<section id="motion" class="motion-section">
+  <div class="sec-head reveal">
+    <div class="sec-num">01</div>
+    <div>
+      <div class="sec-eyebrow">MOTION STUDY</div>
+      <div class="sec-title">ROOK in the field.</div>
+    </div>
+  </div>
+  <div class="vid-grid reveal">
+    <div class="vid-cell">
+      <video muted loop playsinline preload="metadata" src="assets/vid/open.mp4"></video>
+      <span class="vid-tag"><b>M-01</b> // BAY OPEN SEQUENCE</span>
+      <span class="vid-rec">LIVE</span>
+    </div>
+    <div class="vid-cell">
+      <video muted loop playsinline preload="metadata" src="assets/vid/terrain.mp4"></video>
+      <span class="vid-tag"><b>M-02</b> // TERRAIN TRAVERSE</span>
+      <span class="vid-rec">LIVE</span>
+    </div>
+    <div class="vid-cell">
+      <video muted loop playsinline preload="metadata" src="assets/vid/soldier.mp4"></video>
+      <span class="vid-tag"><b>M-03</b> // DISMOUNT ESCORT</span>
+      <span class="vid-rec">LIVE</span>
+    </div>
+    <div class="vid-cell">
+      <video muted loop playsinline preload="metadata" src="assets/vid/stop.mp4"></video>
+      <span class="vid-tag"><b>M-04</b> // HALT &amp; DEPLOY</span>
+      <span class="vid-rec">LIVE</span>
+    </div>
+  </div>
+</section>
 
 <!-- ORIGIN / MISSION -->
 <section id="origin">
   <div class="sec-head reveal">
-    <div class="sec-num">01</div>
+    <div class="sec-num">02</div>
     <div>
       <div class="sec-eyebrow">NAME ORIGIN · ROLE IN THE MISSION</div>
       <div class="sec-title">Strength. Protection. Mobility.<br><em>Strategic support.</em></div>
@@ -462,7 +496,7 @@
 
   <div class="why reveal">
     <div class="why-text">ROOK is more than a vehicle — it's a <em>force multiplier</em>. It empowers operators to project autonomous capability farther, operate longer, and adapt faster.</div>
-    <div class="why-tag">SILENT. TIRELESS. MISSION-READY.</div>
+    <div class="why-tag">SILENT. RELENTLESS. MISSION-READY.</div>
   </div>
 </section>
 
@@ -486,71 +520,38 @@
   </div>
 </div>
 
-<!-- MOTION -->
-<section id="motion" class="motion-section">
-  <div class="sec-head reveal">
-    <div class="sec-num">02</div>
-    <div>
-      <div class="sec-eyebrow">MOTION STUDY</div>
-      <div class="sec-title">ROOK in the field.</div>
-    </div>
-  </div>
-  <div class="vid-grid reveal">
-    <div class="vid-cell">
-      <video muted loop playsinline preload="metadata" src="assets/vid/open.mp4"></video>
-      <span class="vid-tag"><b>M-01</b> // BAY OPEN SEQUENCE</span>
-      <span class="vid-rec">LIVE</span>
-    </div>
-    <div class="vid-cell">
-      <video muted loop playsinline preload="metadata" src="assets/vid/terrain.mp4"></video>
-      <span class="vid-tag"><b>M-02</b> // TERRAIN TRAVERSE</span>
-      <span class="vid-rec">LIVE</span>
-    </div>
-    <div class="vid-cell">
-      <video muted loop playsinline preload="metadata" src="assets/vid/soldier.mp4"></video>
-      <span class="vid-tag"><b>M-03</b> // DISMOUNT ESCORT</span>
-      <span class="vid-rec">LIVE</span>
-    </div>
-    <div class="vid-cell">
-      <video muted loop playsinline preload="metadata" src="assets/vid/stop.mp4"></video>
-      <span class="vid-tag"><b>M-04</b> // HALT &amp; DEPLOY</span>
-      <span class="vid-rec">LIVE</span>
-    </div>
-  </div>
-</section>
-
 <!-- SPECS -->
 <section id="specs">
   <div class="sec-head reveal">
     <div class="sec-num">03</div>
     <div>
       <div class="sec-eyebrow">TECHNICAL SPECIFICATION</div>
-      <div class="sec-title">Engineered to <em>MUTT 6×6</em> standard.</div>
+      <div class="sec-title">Engineered to <em>MUTT 4×4</em> standard.</div>
     </div>
   </div>
   <div class="stat-strip reveal">
-    <div class="stat-card"><div><span class="stat-num" data-count="2362" data-comma="1">0</span><span class="stat-unit">mm</span></div><div class="stat-label">LENGTH · GDLS CONFIRMED</div></div>
-    <div class="stat-card"><div><span class="stat-num" data-count="1778" data-comma="1">0</span><span class="stat-unit">mm</span></div><div class="stat-label">WIDTH · GDLS CONFIRMED</div></div>
-    <div class="stat-card"><div><span class="stat-num" data-count="408">0</span><span class="stat-unit">kg</span></div><div class="stat-label">PAYLOAD CAPACITY</div></div>
+    <div class="stat-card"><div><span class="stat-num" data-count="2134" data-comma="1">0</span><span class="stat-unit">mm</span></div><div class="stat-label">LENGTH · GDLS CONFIRMED</div></div>
+    <div class="stat-card"><div><span class="stat-num" data-count="1524" data-comma="1">0</span><span class="stat-unit">mm</span></div><div class="stat-label">WIDTH · GDLS CONFIRMED</div></div>
+    <div class="stat-card"><div><span class="stat-num" data-count="272">0</span><span class="stat-unit">kg</span></div><div class="stat-label">PAYLOAD CAPACITY</div></div>
     <div class="stat-card"><div><span class="stat-num" data-count="58">0</span><span class="stat-unit">km</span></div><div class="stat-label">WHEELED RANGE</div></div>
-    <div class="stat-card"><div><span class="stat-num" data-count="3">0</span><span class="stat-unit">kW</span></div><div class="stat-label">EXPORT POWER</div></div>
+    <div class="stat-card"><div><span class="stat-num">1.5</span><span class="stat-unit">kW</span></div><div class="stat-label">EXPORT POWER</div></div>
   </div>
   <div class="specs-detail reveal">
     <div class="specs-col">
-      <div class="specs-col-title">VEHICLE // MUTT 6×6 BASE</div>
-      <div class="spec-row"><span class="spec-row-label">Length</span><span class="spec-row-val gold">2,362 mm / 93 in</span></div>
-      <div class="spec-row"><span class="spec-row-label">Width (body)</span><span class="spec-row-val gold">1,778 mm / 70 in</span></div>
-      <div class="spec-row"><span class="spec-row-label">Width (tire to tire)</span><span class="spec-row-val">~2,050 mm est.</span></div>
-      <div class="spec-row"><span class="spec-row-label">Hull height (deck)</span><span class="spec-row-val">~720 mm est.</span></div>
-      <div class="spec-row"><span class="spec-row-label">Total height (closed)</span><span class="spec-row-val">~1,020 mm est.</span></div>
-      <div class="spec-row"><span class="spec-row-label">Ground clearance</span><span class="spec-row-val">~330 mm est.</span></div>
-      <div class="spec-row"><span class="spec-row-label">Gross vehicle weight</span><span class="spec-row-val">1,225 kg</span></div>
-      <div class="spec-row"><span class="spec-row-label">Max payload</span><span class="spec-row-val gold">408 kg</span></div>
-      <div class="spec-row"><span class="spec-row-label">Drive config</span><span class="spec-row-val gold">6×6 Electric</span></div>
+      <div class="specs-col-title">VEHICLE // MUTT 4×4 BASE</div>
+      <div class="spec-row"><span class="spec-row-label">Length</span><span class="spec-row-val gold">2,134 mm / 84 in</span></div>
+      <div class="spec-row"><span class="spec-row-label">Width (body)</span><span class="spec-row-val gold">1,524 mm / 60 in</span></div>
+      <div class="spec-row"><span class="spec-row-label">Width (tire to tire)</span><span class="spec-row-val">~1,750 mm est.</span></div>
+      <div class="spec-row"><span class="spec-row-label">Hull height (deck)</span><span class="spec-row-val">~700 mm est.</span></div>
+      <div class="spec-row"><span class="spec-row-label">Total height (closed)</span><span class="spec-row-val">~980 mm est.</span></div>
+      <div class="spec-row"><span class="spec-row-label">Ground clearance</span><span class="spec-row-val">~300 mm est.</span></div>
+      <div class="spec-row"><span class="spec-row-label">Gross vehicle weight</span><span class="spec-row-val">771 kg / 1,700 lb</span></div>
+      <div class="spec-row"><span class="spec-row-label">Max payload</span><span class="spec-row-val gold">272 kg / 600 lb</span></div>
+      <div class="spec-row"><span class="spec-row-label">Drive config</span><span class="spec-row-val gold">4×4 Electric</span></div>
       <div class="spec-row"><span class="spec-row-label">OS</span><span class="spec-row-val gold">Lattice OS</span></div>
       <div class="spec-note">
         <div class="spec-note-title">SOURCE NOTE</div>
-        <div class="spec-note-body">Length / width / weight from GDLS published MUTT 6×6 specs. Heights and clearance estimated from photo reference and 8×8 proportions.</div>
+        <div class="spec-note-body">Length / width / weight / payload from GDLS published MUTT 4×4 wheeled specs. Heights and clearance estimated from photo reference.</div>
       </div>
     </div>
     <div class="specs-col">
@@ -565,7 +566,7 @@
       <div class="spec-row"><span class="spec-row-label">Capacity in ROOK</span><span class="spec-row-val gold">2 units</span></div>
       <div class="spec-note">
         <div class="spec-note-title">BAY FIT CHECK</div>
-        <div class="spec-note-body">Two Ghosts side-by-side: 440 mm of 1,450 mm interior width. Folded height 240 mm in 300 mm bay depth — 60 mm reserved for isolation mounts and charge connectors.</div>
+        <div class="spec-note-body">Two Ghosts side-by-side: 440 mm of ~1,200 mm interior width. Folded height 240 mm in 300 mm bay depth — 60 mm reserved for isolation mounts and charge connectors.</div>
       </div>
     </div>
     <div class="specs-col">
@@ -579,7 +580,7 @@
         <span class="spec-row-label" style="color:var(--white)">Total used</span><span class="spec-row-val">~114 kg</span>
       </div>
       <div class="spec-row">
-        <span class="spec-row-label" style="color:var(--white)">Remaining margin</span><span class="spec-row-val gold">~294 kg</span>
+        <span class="spec-row-label" style="color:var(--white)">Remaining margin</span><span class="spec-row-val gold">~158 kg</span>
       </div>
       <div class="spec-note">
         <div class="spec-note-title">AIR TRANSPORT</div>
@@ -611,7 +612,7 @@
     <div class="bay-card">
       <span class="bay-card-num">03–08</span>
       <div class="bay-card-title">CHARGE RACK</div>
-      <div class="bay-card-body">Six Ghost battery packs charging simultaneously off the 3 kW export bus. Per-cell temperature monitoring, status LEDs visible without opening the bay. Full cycle completes in transit.</div>
+      <div class="bay-card-body">Six Ghost battery packs charging simultaneously off the 1.5 kW export bus. Per-cell temperature monitoring, status LEDs visible without opening the bay. Full cycle completes in transit.</div>
     </div>
     <div class="bay-card">
       <span class="bay-card-num">09</span>
@@ -650,28 +651,40 @@
   </div>
 </section>
 
-<!-- DESIGNER -->
+<!-- PROJECT SCOPE -->
 <section id="about" class="about-section">
   <div class="sec-head reveal">
     <div class="sec-num">06</div>
     <div>
-      <div class="sec-eyebrow">DESIGNER</div>
-      <div class="sec-title">19 years building worlds.<br><em>Now building what matters.</em></div>
+      <div class="sec-eyebrow">PROJECT SCOPE</div>
+      <div class="sec-title">Concept to communication.<br><em>End to end.</em></div>
     </div>
   </div>
-  <div class="about-grid reveal">
-    <div class="about-body">
-      <p>ROOK was developed as a self-directed concept study by <strong>Michael Altuna</strong>, a senior 3D environment and asset artist with 19 years in the game industry — real-time environments, hard-surface assets, and cinematic visuals for AAA titles.</p>
-      <div class="about-quote">"Every dimension, payload figure, and bay configuration was researched against confirmed GDLS MUTT specifications and Anduril's published Ghost data."</div>
-      <p>The project spans the full design communication pipeline: concept development, a complete <strong>graphic decal system</strong>, hard-surface visualization, field renders, motion studies, and this presentation — produced the way a concept would be pitched internally before engineering review.</p>
+  <div class="reveal" style="max-width:860px">
+    <p style="color:var(--grey); font-size:16px; line-height:1.9; margin-bottom:32px">
+      ROOK is a self-directed concept study exploring how a small autonomous ground vehicle could deploy, recover, and sustain Ghost-class drones at the squad level. Every dimension and payload figure was researched against <strong style="color:var(--white)">confirmed GDLS MUTT specifications</strong> and Anduril's published Ghost data — then carried through the full design communication pipeline.
+    </p>
+  </div>
+  <div class="roles reveal">
+    <div class="role">
+      <div class="role-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D3A017" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2 l0 4 M12 18 l0 4 M2 12 l4 0 M18 12 l4 0"/></svg></div>
+      <div class="role-title">CONCEPT &amp; RESEARCH</div>
+      <div class="role-body">Platform selection, real-world spec grounding, mission definition, payload budgeting.</div>
     </div>
-    <div class="skills-list">
-      <div class="skill-item"><div class="skill-top"><span class="skill-name">3D MODELING · HARD SURFACE</span><span class="skill-tag">19 YRS</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="98%"></div></div></div>
-      <div class="skill-item"><div class="skill-top"><span class="skill-name">UNREAL ENGINE</span><span class="skill-tag">SENIOR</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="95%"></div></div></div>
-      <div class="skill-item"><div class="skill-top"><span class="skill-name">ENVIRONMENT ART</span><span class="skill-tag">LEAD</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="95%"></div></div></div>
-      <div class="skill-item"><div class="skill-top"><span class="skill-name">BLENDER · REAL-TIME ASSETS</span><span class="skill-tag">ADVANCED</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="88%"></div></div></div>
-      <div class="skill-item"><div class="skill-top"><span class="skill-name">CINEMATIC RENDERING</span><span class="skill-tag">ADVANCED</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="90%"></div></div></div>
-      <div class="skill-item"><div class="skill-top"><span class="skill-name">MOTION GRAPHICS · GRAPHIC SYSTEMS</span><span class="skill-tag">PROFICIENT</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="80%"></div></div></div>
+    <div class="role">
+      <div class="role-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D3A017" stroke-width="1.5"><rect x="3" y="3" width="8" height="8"/><rect x="13" y="13" width="8" height="8"/><path d="M13 8 l8 0 M8 13 l0 8"/></svg></div>
+      <div class="role-title">GRAPHIC SYSTEM</div>
+      <div class="role-body">Complete decal &amp; livery system — identity marks, system labels, warnings, docking guides.</div>
+    </div>
+    <div class="role">
+      <div class="role-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D3A017" stroke-width="1.5"><path d="M3 17 L9 11 L13 15 L21 7 M21 7 l0 5 M21 7 l-5 0"/></svg></div>
+      <div class="role-title">VISUALIZATION</div>
+      <div class="role-body">Studio and field renders, payload configuration studies, livery application.</div>
+    </div>
+    <div class="role">
+      <div class="role-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D3A017" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M10 9 l5 3 -5 3 Z" fill="#D3A017" stroke="none"/></svg></div>
+      <div class="role-title">MOTION &amp; WEB</div>
+      <div class="role-body">Field motion studies, HUD-style interface animation, and this presentation.</div>
     </div>
   </div>
 </section>
@@ -745,7 +758,7 @@
     { dot: [61, 9],  lab: [82, 4],   t: 'GHOST BAY 01–02', s: 'AUTO DOCK · 2× MISSION READY' },
     { dot: [27, 38], lab: [7, 22],   t: 'OPTICS / LIGHT BAR', s: 'DAY-NIGHT · IR CAPABLE' },
     { dot: [17, 58], lab: [4, 76],   t: 'RECOVERY POINT', s: 'MIL-STD SHACKLE' },
-    { dot: [36, 76], lab: [26, 94],  t: 'MTR-04 DRIVE', s: '6×6 INDEPENDENT ELECTRIC' },
+    { dot: [36, 76], lab: [26, 94],  t: 'MTR-04 DRIVE', s: '4×4 INDEPENDENT ELECTRIC' },
     { dot: [63, 72], lab: [62, 94],  t: 'LFP-01 BATTERY', s: '750V · 18 kWh MODULE' },
     { dot: [85, 62], lab: [95, 82],  t: 'SYS-04 SUSPENSION', s: 'LONG-TRAVEL ALL-TERRAIN' }
   ];
@@ -867,6 +880,47 @@
     clock.textContent = 'T+00:' + String(secs).padStart(2, '0');
     bar.style.width = ((elapsed / TOTAL) * 100) + '%';
     requestAnimationFrame(dTick);
+  }
+
+  /* ── HERO PARALLAX (subtle mouse-follow) ── */
+  const heroEl = document.querySelector('.hero');
+  const heroImgEl = document.getElementById('heroImg');
+  const bigType = document.querySelector('.hero-bigtype');
+  heroEl.addEventListener('mousemove', (e) => {
+    const r = heroEl.getBoundingClientRect();
+    const nx = (e.clientX - r.left) / r.width - 0.5;
+    const ny = (e.clientY - r.top) / r.height - 0.5;
+    heroImgEl.style.translate = (nx * 14) + 'px ' + (ny * 10) + 'px';
+    bigType.style.transform = 'translate(calc(-50% + ' + (nx * -20) + 'px), calc(-58% + ' + (ny * -12) + 'px))';
+  });
+  heroEl.addEventListener('mouseleave', () => { heroImgEl.style.translate = '0px 0px'; });
+
+  /* ── TURNTABLE SCRUB (optional upgrade) ──
+     To enable Anduril-style scroll rotation:
+     1. Render a turntable sequence of the vehicle (60–120 frames, transparent
+        WebP, same framing) named frame_0001.webp, frame_0002.webp, ...
+     2. Put them in assets/img/turntable/
+     3. Set count below to the number of frames.
+     The hero image will scrub through the rotation as the user scrolls. */
+  const TURNTABLE = { path: 'assets/img/turntable/', count: 0, pad: 4, ext: '.webp' };
+  if (TURNTABLE.count > 1) {
+    const frames = [];
+    for (let i = 1; i <= TURNTABLE.count; i++) {
+      const im = new Image();
+      im.src = TURNTABLE.path + 'frame_' + String(i).padStart(TURNTABLE.pad, '0') + TURNTABLE.ext;
+      frames.push(im);
+    }
+    let lastIdx = -1;
+    window.addEventListener('scroll', () => {
+      const r = heroEl.getBoundingClientRect();
+      const total = r.height + window.innerHeight;
+      const p = Math.min(Math.max((window.innerHeight - r.top) / total, 0), 1);
+      const idx = Math.min(Math.floor(p * TURNTABLE.count), TURNTABLE.count - 1);
+      if (idx !== lastIdx && frames[idx].complete) {
+        heroImgEl.src = frames[idx].src;
+        lastIdx = idx;
+      }
+    }, { passive: true });
   }
 
   /* ── Barcode ── */
