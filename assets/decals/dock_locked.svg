@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 92" width="80" height="92">
+
+<path d="M4,18 L4,4 L18,4" fill="none" stroke="#E8EAF0" stroke-width="2.5"/>
+<path d="M62,4 L76,4 L76,18" fill="none" stroke="#E8EAF0" stroke-width="2.5"/>
+<path d="M76,62 L76,76 L62,76" fill="none" stroke="#E8EAF0" stroke-width="2.5"/>
+<path d="M18,76 L4,76 L4,62" fill="none" stroke="#E8EAF0" stroke-width="2.5"/>
+<path d="M36,4 l8,0 l-4,7 Z" fill="#D3A017"/>
+<rect x="30" y="38" width="20" height="16" rx="2" fill="#E8EAF0"/>
+<path d="M34,38 v-6 a6 6 0 0 1 12,0 v6" fill="none" stroke="#E8EAF0" stroke-width="3"/>
+<text x="40" y="90" font-family="Bahnschrift, 'Arial Narrow', 'Roboto Condensed', Arial, sans-serif" font-size="9.5" font-weight="700" letter-spacing="1.5" fill="#8A92A6" text-anchor="middle">LOCKED</text>
+</svg>

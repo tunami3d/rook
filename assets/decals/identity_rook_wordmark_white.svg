@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 76" width="340" height="76">
+
+<g transform="translate(0,8) scale(2.4)">
+  <path d="M10 0 L20 20 L15.5 20 L10 8.5 L4.5 20 L0 20 Z" fill="#E8EAF0"/>
+  <path d="M10 13 L13.2 20 L6.8 20 Z" fill="#E8EAF0" opacity="0.55"/>
+</g>
+<text x="62" y="44" font-family="Bahnschrift, 'Arial Narrow', 'Roboto Condensed', Arial, sans-serif" font-size="46" font-weight="700" letter-spacing="4" fill="#E8EAF0" text-anchor="start">ROOK</text>
+<text x="62" y="62" font-family="Bahnschrift, 'Arial Narrow', 'Roboto Condensed', Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="2.5" fill="#8A92A6" text-anchor="start">AUTONOMOUS SUPPORT PLATFORM</text>
+
+</svg>

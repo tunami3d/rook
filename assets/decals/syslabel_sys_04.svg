@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 62" width="150" height="62">
+
+<text x="0" y="13" font-family="Bahnschrift, 'Arial Narrow', 'Roboto Condensed', Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="2" fill="#8A92A6" text-anchor="start">SUSPENSION</text>
+<text x="0" y="40" font-family="Bahnschrift, 'Arial Narrow', 'Roboto Condensed', Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="1.5" fill="#E8EAF0" text-anchor="start">SYS-04</text>
+<path d="M0,50 l10,0 l5,5 l-15,0 Z" fill="#D3A017"/>
+<line x1="20" y1="55" x2="70" y2="55" stroke="#4A5164" stroke-width="1.5"/>
+
+</svg>

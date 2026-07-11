@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 36" width="280" height="36">
+<defs><pattern id="sb" width="14" height="14" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+  <rect width="14" height="14" fill="none"/>
+  <rect width="7" height="14" fill="#E8EAF0" opacity="0.85"/>
+</pattern></defs>
+<rect x="1" y="1" width="150" height="34" fill="url(#sb)" stroke="#E8EAF0" stroke-width="1.5"/>
+<rect x="151" y="1" width="128" height="34" fill="none" stroke="#E8EAF0" stroke-width="1.5"/>
+<text x="168" y="25" font-family="Bahnschrift, 'Arial Narrow', 'Roboto Condensed', Arial, sans-serif" font-size="17" font-weight="700" letter-spacing="2.5" fill="#E8EAF0" text-anchor="start">A03</text>
+<g transform="translate(240,8) scale(1.0)">
+  <path d="M10 0 L20 20 L15.5 20 L10 8.5 L4.5 20 L0 20 Z" fill="#E8EAF0"/>
+  <path d="M10 13 L13.2 20 L6.8 20 Z" fill="#E8EAF0" opacity="0.55"/>
+</g>
+
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 36" width="280" height="36">
+
+<rect x="1" y="1" width="278" height="34" fill="none" stroke="#E8EAF0" stroke-width="2"/>
+<g transform="translate(10,8) scale(1.0)">
+  <path d="M10 0 L20 20 L15.5 20 L10 8.5 L4.5 20 L0 20 Z" fill="#E8EAF0"/>
+  <path d="M10 13 L13.2 20 L6.8 20 Z" fill="#E8EAF0" opacity="0.55"/>
+</g>
+<text x="38" y="25" font-family="Bahnschrift, 'Arial Narrow', 'Roboto Condensed', Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="3" fill="#E8EAF0" text-anchor="start">ROOK</text>
+<line x1="200" y1="8" x2="200" y2="28" stroke="#4A5164" stroke-width="1.5"/>
+<text x="212" y="24" font-family="Bahnschrift, 'Arial Narrow', 'Roboto Condensed', Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="2" fill="#8A92A6" text-anchor="start">A03</text>
+
+</svg>

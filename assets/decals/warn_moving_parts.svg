@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 46" width="200" height="46">
+
+<path d="M22,4 L42,38 L2,38 Z" fill="none" stroke="#C23B3B" stroke-width="3" stroke-linejoin="round"/>
+<path d="M22,15 l0,12" stroke="#C23B3B" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="22" cy="32.5" r="2.2" fill="#C23B3B"/>
+<text x="54" y="20" font-family="Bahnschrift, 'Arial Narrow', 'Roboto Condensed', Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="1.5" fill="#E8EAF0" text-anchor="start">WARNING</text>
+<text x="54" y="34" font-family="Bahnschrift, 'Arial Narrow', 'Roboto Condensed', Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="1.5" fill="#E8EAF0" text-anchor="start">MOVING PARTS</text>
+
+</svg>

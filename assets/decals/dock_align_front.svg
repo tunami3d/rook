@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 92" width="80" height="92">
+
+<path d="M4,18 L4,4 L18,4" fill="none" stroke="#E8EAF0" stroke-width="2.5"/>
+<path d="M62,4 L76,4 L76,18" fill="none" stroke="#E8EAF0" stroke-width="2.5"/>
+<path d="M76,62 L76,76 L62,76" fill="none" stroke="#E8EAF0" stroke-width="2.5"/>
+<path d="M18,76 L4,76 L4,62" fill="none" stroke="#E8EAF0" stroke-width="2.5"/>
+<path d="M36,4 l8,0 l-4,7 Z" fill="#D3A017"/>
+<circle cx="40" cy="40" r="9" fill="none" stroke="#D3A017" stroke-width="2"/>
+<circle cx="40" cy="40" r="2.5" fill="#D3A017"/>
+<path d="M40,24 l0,7 M40,49 l0,7 M24,40 l7,0 M49,40 l7,0" stroke="#D3A017" stroke-width="2"/>
+<text x="40" y="90" font-family="Bahnschrift, 'Arial Narrow', 'Roboto Condensed', Arial, sans-serif" font-size="9.5" font-weight="700" letter-spacing="1.5" fill="#8A92A6" text-anchor="middle">ALIGN FRONT</text>
+</svg>

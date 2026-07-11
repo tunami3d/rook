@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 44" width="180" height="44">
+<defs><pattern id="hz" width="14" height="14" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+  <rect width="14" height="14" fill="none"/>
+  <rect width="7" height="14" fill="#E8EAF0" opacity="0.9"/>
+</pattern></defs>
+<rect x="0" y="0" width="140" height="22" fill="url(#hz)" stroke="#E8EAF0" stroke-width="1.5"/>
+<text x="0" y="38" font-family="Bahnschrift, 'Arial Narrow', 'Roboto Condensed', Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="1.5" fill="#8A92A6" text-anchor="start">NO STEP / HAZARD (WHITE)</text>
+
+</svg>

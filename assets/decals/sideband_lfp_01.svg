@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 32" width="160" height="32">
+
+<rect x="1" y="1" width="158" height="30" fill="none" stroke="#E8EAF0" stroke-width="1.5"/>
+<text x="12" y="22" font-family="'JetBrains Mono', 'Consolas', 'Courier New', monospace" font-size="14" font-weight="700" letter-spacing="2" fill="#E8EAF0" text-anchor="start">LFP-01</text>
+<path d="M108.0,9 l7.4399999999999995,6.0 l-7.4399999999999995,6.0" fill="none" stroke="#D3A017" stroke-width="1.92"/>
+<path d="M116.64,9 l7.4399999999999995,6.0 l-7.4399999999999995,6.0" fill="none" stroke="#D3A017" stroke-width="1.92"/>
+<path d="M125.28,9 l7.4399999999999995,6.0 l-7.4399999999999995,6.0" fill="none" stroke="#D3A017" stroke-width="1.92"/>
+
+</svg>
