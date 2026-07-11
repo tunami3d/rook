@@ -577,7 +577,7 @@
     <div class="bay-card">
       <span class="bay-card-num">03–08</span>
       <div class="bay-card-title">CHARGE RACK</div>
-      <div class="bay-card-body">Six Ghost battery packs charging simultaneously off the 1.5 kW export bus. Per-cell temperature monitoring, status LEDs visible without opening the bay. Full cycle completes in transit.</div>
+      <div class="bay-card-body">Six-pack battery magazine charging in sequence off the 1.5 kW export bus — each pack fast-charges in ~35 minutes. Per-cell temperature monitoring, status LEDs visible without opening the bay.</div>
     </div>
     <div class="bay-card">
       <span class="bay-card-num">09</span>
@@ -587,7 +587,7 @@
     <div class="bay-card">
       <span class="bay-card-num">10</span>
       <div class="bay-card-title">EDGE COMPUTE</div>
-      <div class="bay-card-body">Integrated Lattice OS node. Link-16, 900 MHz mesh radio, GPS/INS. ROOK acts as a mobile ground control station — Ghosts hand off telemetry, rearm, and relaunch without operator input.</div>
+      <div class="bay-card-body">Integrated Lattice OS node. Lattice Mesh networking, 900 MHz MANET radio, GPS/INS. ROOK acts as a mobile ground control station — Ghosts hand off telemetry, rearm, and relaunch without operator input.</div>
     </div>
   </div>
 </section>
@@ -842,7 +842,7 @@
     const idx = Math.floor(elapsed / STEP_MS);
     steps.forEach((s, i) => s.classList.toggle('live', i === idx));
     const secs = Math.floor((elapsed / TOTAL) * 88);
-    clock.textContent = 'T+00:' + String(secs).padStart(2, '0');
+    clock.textContent = 'T+0' + Math.floor(secs / 60) + ':' + String(secs % 60).padStart(2, '0');
     bar.style.width = ((elapsed / TOTAL) * 100) + '%';
     requestAnimationFrame(dTick);
   }
