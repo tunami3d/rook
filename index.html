@@ -827,11 +827,11 @@
 
     /* scroll-timed callouts: win = [start,end] progress window */
     const CALLOUTS = [
-      { win: [0.14, 0.34], dot: [46, 20], lab: [60, 10], t: 'GHOST BAY 01\u201302', s: '2\u00d7 MISSION READY' },
-      { win: [0.34, 0.52], dot: [38, 58], lab: [27, 75], t: 'MTR-04 DRIVE', s: '4\u00d74 INDEPENDENT ELECTRIC' },
-      { win: [0.50, 0.66], dot: [50, 58], lab: [58, 41], t: 'LFP-01 BATTERY', s: 'SEQUENCED 6-PACK CHARGE' },
-      { win: [0.64, 0.80], dot: [60, 50], lab: [52, 33], t: 'SYS-04 SUSPENSION', s: 'LONG-TRAVEL ALL-TERRAIN' },
-      { win: [0.80, 0.96], dot: [56, 61], lab: [68, 74], t: 'RECOVERY POINT', s: 'MIL-STD SHACKLE' }
+      { win: [0.14, 0.34], dot: [28, 57], lab: [28, 74], t: 'MTR-04 DRIVE', s: '4\u00d74 INDEPENDENT ELECTRIC' },
+      { win: [0.34, 0.52], dot: [58, 20], lab: [58, 8],  t: 'GHOST BAY 01\u201302', s: '2\u00d7 MISSION READY' },
+      { win: [0.50, 0.66], dot: [50, 56], lab: [50, 77], t: 'LFP-01 BATTERY', s: 'SEQUENCED 6-PACK CHARGE' },
+      { win: [0.64, 0.80], dot: [50, 63], lab: [50, 34], t: 'SYS-04 SUSPENSION', s: 'LONG-TRAVEL ALL-TERRAIN' },
+      { win: [0.80, 0.96], dot: [59, 65], lab: [59, 78], t: 'RECOVERY POINT', s: 'MIL-STD SHACKLE' }
     ];
     const items = [];
     CALLOUTS.forEach((c) => {
@@ -853,10 +853,17 @@
       items.forEach((it) => {
         const d = it.dot.getBoundingClientRect();
         const l = it.lab.getBoundingClientRect();
-        it.line.setAttribute('x1', d.left - box.left + d.width / 2);
-        it.line.setAttribute('y1', d.top - box.top + d.height / 2);
-        it.line.setAttribute('x2', l.left - box.left + l.width / 2);
-        it.line.setAttribute('y2', l.top - box.top + l.height / 2);
+        const dx = d.left - box.left + d.width / 2;
+        const dy = d.top - box.top + d.height / 2;
+        const lx = l.left - box.left + l.width / 2;
+        /* line ends at nearest label edge (top or bottom) */
+        const ly = (l.top + l.height / 2 > d.top + d.height / 2)
+          ? l.top - box.top
+          : l.top - box.top + l.height;
+        it.line.setAttribute('x1', dx);
+        it.line.setAttribute('y1', dy);
+        it.line.setAttribute('x2', lx);
+        it.line.setAttribute('y2', ly);
       });
     }
 
