@@ -828,25 +828,32 @@
     /* scroll-timed callouts: win = [start,end] progress window */
     const CALLOUTS = [
       { win: [0.14, 0.34], dot: [28, 57], lab: [28, 74], t: 'MTR-04 DRIVE', s: '4\u00d74 INDEPENDENT ELECTRIC' },
-      { win: [0.34, 0.52], dot: [50, 27], lab: [50, 15],  t: 'GHOST BAY 01\u201302', s: '2\u00d7 MISSION READY' },
+      { win: [0.34, 0.52], dot: [50, 27], lab: [50, 15], m: { dot: [50, 44], lab: [50, 31] }, t: 'GHOST BAY 01\u201302', s: '2\u00d7 MISSION READY' },
       { win: [0.50, 0.66], dot: [41, 56], lab: [41, 77], t: 'LFP-01 BATTERY', s: 'SEQUENCED 6-PACK CHARGE' },
       { win: [0.64, 0.80], dot: [58, 63], lab: [58, 47], t: 'SYS-04 SUSPENSION', s: 'LONG-TRAVEL ALL-TERRAIN' },
       { win: [0.80, 0.96], dot: [70, 65], lab: [70, 78], t: 'RECOVERY POINT', s: 'MIL-STD SHACKLE' }
     ];
     const items = [];
+    const isMobile = () => window.innerWidth < 700;
+    function applyCoords() {
+      items.forEach((it) => {
+        const src = (isMobile() && it.c.m) ? it.c.m : it.c;
+        it.dot.style.left = src.dot[0] + '%'; it.dot.style.top = src.dot[1] + '%';
+        it.lab.style.left = src.lab[0] + '%'; it.lab.style.top = src.lab[1] + '%';
+      });
+    }
     CALLOUTS.forEach((c) => {
       const dot = document.createElement('div');
       dot.className = 'co-dot co-item';
-      dot.style.left = c.dot[0] + '%'; dot.style.top = c.dot[1] + '%';
       const lab = document.createElement('div');
       lab.className = 'co-label co-item';
-      lab.style.left = c.lab[0] + '%'; lab.style.top = c.lab[1] + '%';
       lab.innerHTML = '<span class="co-t">' + c.t + '</span><span class="co-s">' + c.s + '</span>';
       const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
       line.classList.add('co-item');
       svg.appendChild(line); sticky.appendChild(dot); sticky.appendChild(lab);
       items.push({ c, dot, lab, line });
     });
+    applyCoords();
 
     function layoutLines() {
       const box = sticky.getBoundingClientRect();
@@ -879,6 +886,7 @@
       canvas.width = canvas.clientWidth * dpr;
       canvas.height = canvas.clientHeight * dpr;
       if (curIdx >= 0) draw(curIdx, true);
+      applyCoords();
       layoutLines();
     }
 
