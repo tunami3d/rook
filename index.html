@@ -590,7 +590,7 @@
     <div class="bay-card">
       <span class="bay-card-num">12</span>
       <div class="bay-card-title">EDGE COMPUTE</div>
-      <div class="bay-card-body">Integrated Lattice OS node. Lattice Mesh networking, 900 MHz MANET radio, GPS/INS. ROOK acts as a mobile ground control station — Ghosts hand off telemetry, rearm, and relaunch without operator input.</div>
+      <div class="bay-card-body">Integrated Lattice OS node. Lattice Mesh networking, 900 MHz MANET radio, GPS/INS. ROOK acts as a mobile ground control station — Ghosts hand off telemetry, rearm, and relaunch through Lattice.</div>
     </div>
   </div>
 </section>
@@ -600,7 +600,7 @@
   <div class="sec-head reveal">
     <div class="sec-num">04</div>
     <div>
-      <div class="sec-eyebrow">DEPLOYMENT SEQUENCE · AUTO-CYCLING</div>
+      <div class="sec-eyebrow">DEPLOYMENT SEQUENCE</div>
       <div class="sec-title">Ghost to airborne in <em>90 seconds.</em></div>
     </div>
   </div>
@@ -610,12 +610,12 @@
     <div class="deploy-step"><div class="deploy-step-num">03</div><div class="deploy-step-title">MAIN ROTOR</div><div class="deploy-step-sub">Swing and lock — audible click confirms engagement</div></div>
     <div class="deploy-step"><div class="deploy-step-num">04</div><div class="deploy-step-title">TAIL SET</div><div class="deploy-step-sub">Extend tail boom, swing tail rotor into position</div></div>
     <div class="deploy-step"><div class="deploy-step-num">05</div><div class="deploy-step-title">SYS CHECK</div><div class="deploy-step-sub">Lattice pre-flight — battery, comms, nav confirmed</div></div>
-    <div class="deploy-step"><div class="deploy-step-num">06</div><div class="deploy-step-title">LAUNCH</div><div class="deploy-step-sub">Autonomous liftoff. ROOK closes bay, resumes mission</div></div>
+    <div class="deploy-step"><div class="deploy-step-num">06</div><div class="deploy-step-title">LAUNCH</div><div class="deploy-step-sub">Liftoff. ROOK closes bay, resumes mission</div></div>
   </div>
   <div class="deploy-readout reveal">
     <span>ELAPSED</span><b id="deployClock">T+00:00</b>
     <div class="deploy-bar"><div class="deploy-bar-fill" id="deployBar"></div></div>
-    <span>OPERATOR INPUTS: <b style="font-size:12px">ZERO</b></span>
+    <span>GHOST 01 // <b style="font-size:12px">AIRBORNE</b></span>
   </div>
 </section>
 
@@ -796,10 +796,14 @@
       progressBar.style.width = '100%';
     }));
   }
-  function startTimer() { clearInterval(timer); timer = setInterval(nextSlide, INTERVAL); }
+  function startTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => { hovering ? resetProgress() : nextSlide(); }, INTERVAL);
+  }
   const show = document.querySelector('.gallery-slideshow');
-  show.addEventListener('mouseenter', () => clearInterval(timer));
-  show.addEventListener('mouseleave', () => startTimer());
+  let hovering = false;
+  show.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') hovering = true; });
+  show.addEventListener('pointerleave', () => { hovering = false; });
   resetProgress(); startTimer();
 
   /* ── VIDEOS: play when visible ── */
