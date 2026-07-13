@@ -240,6 +240,20 @@
   /* ═══ BAY ═══ */
   .bay-section { background: var(--surface); }
   .bay-hero { position: relative; margin-bottom: 3px; border: 1px solid var(--border); }
+  .xray { position: relative; overflow: hidden; border: 1px solid var(--border); margin-bottom: 3px; cursor: ew-resize; user-select: none; touch-action: none; --x: 100%; }
+  .xray img { width: 100%; display: block; pointer-events: none; }
+  .xray-top { position: absolute; inset: 0; clip-path: inset(0 0 0 var(--x)); }
+  .xray-handle { position: absolute; top: 0; bottom: 0; left: var(--x); width: 2px; background: var(--gold); transform: translateX(-1px); }
+  .xray-grip {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 34px; height: 34px; border-radius: 50%;
+    background: rgba(6,7,8,0.9); border: 1.5px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold); font-size: 14px;
+  }
+  .xray-lab { position: absolute; bottom: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 2px; padding: 4px 10px; background: rgba(6,7,8,0.75); border: 1px solid var(--border-hi); color: var(--grey); }
+  .xray-lab-l { left: 14px; }
+  .xray-lab-r { right: 14px; color: #7FD4C8; border-color: rgba(127,212,200,0.3); }
   .bay-hero img { width: 100%; display: block; }
   .img-tag { position: absolute; top: 14px; left: 14px; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 1.5px; color: var(--gold); background: rgba(6,7,8,0.75); border: 1px solid var(--gold-dim); padding: 4px 10px; }
   .bay-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3px; }
@@ -392,8 +406,8 @@
 <!-- TICKER -->
 <div class="ticker">
   <div class="ticker-track">
-    <span>DEPLOY · RECOVER · SUSTAIN</span><span>◆</span><span>MUTT 4×4 CHASSIS</span><span>◆</span><span>LATTICE OS NATIVE</span><span>◆</span><span>V-22 AIR TRANSPORTABLE</span><span>◆</span><span>1.5 KW EXPORT POWER</span><span>◆</span><span>6× BATTERY SEQUENCED CHARGE</span><span>◆</span><span>BUILT FOR THE MISSION</span><span>◆</span>
-    <span>DEPLOY · RECOVER · SUSTAIN</span><span>◆</span><span>MUTT 4×4 CHASSIS</span><span>◆</span><span>LATTICE OS NATIVE</span><span>◆</span><span>V-22 AIR TRANSPORTABLE</span><span>◆</span><span>1.5 KW EXPORT POWER</span><span>◆</span><span>6× BATTERY SEQUENCED CHARGE</span><span>◆</span><span>BUILT FOR THE MISSION</span><span>◆</span>
+    <span>DEPLOY · RECOVER · SUSTAIN</span><span>◆</span><span>MUTT 4×4 CHASSIS</span><span>◆</span><span>LATTICE OS NATIVE</span><span>◆</span><span>V-22 AIR TRANSPORTABLE</span><span>◆</span><span>1.5 KW EXPORT POWER</span><span>◆</span><span>8× BATTERY SEQUENCED CHARGE</span><span>◆</span><span>BUILT FOR THE MISSION</span><span>◆</span>
+    <span>DEPLOY · RECOVER · SUSTAIN</span><span>◆</span><span>MUTT 4×4 CHASSIS</span><span>◆</span><span>LATTICE OS NATIVE</span><span>◆</span><span>V-22 AIR TRANSPORTABLE</span><span>◆</span><span>1.5 KW EXPORT POWER</span><span>◆</span><span>8× BATTERY SEQUENCED CHARGE</span><span>◆</span><span>BUILT FOR THE MISSION</span><span>◆</span>
   </div>
 </div>
 
@@ -526,11 +540,11 @@
     <div class="gallery-slide active"><img src="assets/img/studio_close.jpg" alt="ROOK studio front"><div class="gallery-label"><i>STUDIO</i> // FRONT DETAIL · LIVERY APPLIED</div></div>
     <div class="gallery-slide"><img src="assets/img/studio_open.jpg" alt="ROOK studio bay open"><div class="gallery-label"><i>STUDIO</i> // BAY OPEN · MISSION CONFIGURATION</div></div>
     <div class="gallery-slide"><img src="assets/img/studio_rear.jpg" alt="ROOK studio rear"><div class="gallery-label"><i>STUDIO</i> // REAR QUARTER</div></div>
+    <div class="gallery-slide"><img src="assets/img/cargo_01.jpg" alt="ROOK C-17 airlift"><div class="gallery-label"><i>TRANSPORT</i> // C-17 STRATEGIC AIRLIFT · 2× ROOK</div></div>
     <div class="gallery-slide"><img src="assets/img/dirt_drive.jpg" alt="ROOK field transit"><div class="gallery-label"><i>FIELD</i> // AUTONOMOUS TRANSIT</div></div>
     <div class="gallery-slide"><img src="assets/img/dirt_soldier.jpg" alt="ROOK dismount escort"><div class="gallery-label"><i>FIELD</i> // DISMOUNT ESCORT · FOLLOW MODE</div></div>
     <div class="gallery-slide"><img src="assets/img/dirt_cargo.jpg" alt="ROOK field resupply"><div class="gallery-label"><i>FIELD</i> // FORWARD RESUPPLY</div></div>
     <div class="gallery-slide"><img src="assets/img/grass_rear.jpg" alt="ROOK overwatch"><div class="gallery-label"><i>FIELD</i> // OVERWATCH POSITION</div></div>
-    <div class="gallery-slide"><img src="assets/img/cargo_02.jpg" alt="ROOK payload config"><div class="gallery-label"><i>PAYLOAD</i> // CHARGE RACK · TOOLS · EDGE COMPUTE</div></div>
 
     <div class="gallery-hud-tl">VISUAL RECORD // A03 SERIES</div>
     <div class="gallery-hud-tr"><b id="gallery-current">01</b> / 08</div>
@@ -548,10 +562,15 @@
       <div class="sec-title">Every millimeter <em>accounted for.</em></div>
     </div>
   </div>
-  <div class="bay-hero reveal">
-    <img src="assets/img/cargo_01.jpg" alt="ROOK payload bay with Ghost drones">
-    <div class="img-tag">FIG 01 // GHOST LOADOUT · MISSION CONFIGURATION</div>
+  <div class="xray reveal" id="xray">
+    <img class="xray-base" src="assets/img/inter_beauty.jpg" alt="ROOK payload bay — physical">
+    <div class="xray-top"><img src="assets/img/inter_wire.jpg" alt="ROOK payload bay — schematic wireframe"></div>
+    <div class="xray-handle"><div class="xray-grip">&#x2194;</div></div>
+    <div class="img-tag">FIG 01 // PAYLOAD BAY — DRAG TO INSPECT</div>
+    <div class="xray-lab xray-lab-l">PHYSICAL</div>
+    <div class="xray-lab xray-lab-r">SCHEMATIC</div>
   </div>
+
   <div class="bay-grid reveal">
     <div class="bay-card">
       <span class="bay-card-num">01–02</span>
@@ -559,17 +578,17 @@
       <div class="bay-card-body">Two Ghost drones in folded transport config. Foam-lined quick-release drawers, deploy-ready in under 60 seconds per unit. 60 mm clearance reserved for connectors and vibration isolation.</div>
     </div>
     <div class="bay-card">
-      <span class="bay-card-num">03–08</span>
+      <span class="bay-card-num">03–10</span>
       <div class="bay-card-title">CHARGE RACK</div>
-      <div class="bay-card-body">Six-pack battery magazine charging in sequence off the 1.5 kW export bus — each pack fast-charges in ~35 minutes. Per-cell temperature monitoring, status LEDs visible without opening the bay.</div>
+      <div class="bay-card-body">Eight-pack battery magazine charging in sequence off the 1.5 kW export bus — each pack fast-charges in ~35 minutes. Per-cell temperature monitoring, status LEDs visible without opening the bay.</div>
     </div>
     <div class="bay-card">
-      <span class="bay-card-num">09</span>
+      <span class="bay-card-num">11</span>
       <div class="bay-card-title">MAINTENANCE</div>
       <div class="bay-card-body">Rotor installation tool, spare propellers, torque kit, airframe locking pins, diagnostic cable, MIL-spec field repair pouch — all accessible without removing drones.</div>
     </div>
     <div class="bay-card">
-      <span class="bay-card-num">10</span>
+      <span class="bay-card-num">12</span>
       <div class="bay-card-title">EDGE COMPUTE</div>
       <div class="bay-card-body">Integrated Lattice OS node. Lattice Mesh networking, 900 MHz MANET radio, GPS/INS. ROOK acts as a mobile ground control station — Ghosts hand off telemetry, rearm, and relaunch without operator input.</div>
     </div>
@@ -829,7 +848,7 @@
     const CALLOUTS = [
       { win: [0.14, 0.34], dot: [28, 57], lab: [28, 74], t: 'MTR-04 DRIVE', s: '4\u00d74 INDEPENDENT ELECTRIC' },
       { win: [0.34, 0.52], dot: [50, 27], lab: [50, 15], m: { dot: [50, 44], lab: [50, 31] }, t: 'GHOST BAY 01\u201302', s: '2\u00d7 MISSION READY' },
-      { win: [0.50, 0.66], dot: [41, 56], lab: [41, 77], t: 'LFP-01 BATTERY', s: 'SEQUENCED 6-PACK CHARGE' },
+      { win: [0.50, 0.66], dot: [41, 56], lab: [41, 77], t: 'LFP-01 BATTERY', s: 'SEQUENCED 8-PACK CHARGE' },
       { win: [0.64, 0.80], dot: [58, 63], lab: [58, 47], t: 'SYS-04 SUSPENSION', s: 'LONG-TRAVEL ALL-TERRAIN' },
       { win: [0.80, 0.96], dot: [70, 65], lab: [70, 78], t: 'RECOVERY POINT', s: 'MIL-STD SHACKLE' }
     ];
@@ -928,6 +947,40 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     sizeCanvas(); onScroll();
     setTimeout(layoutLines, 600); /* after webfonts settle */
+  })();
+
+  /* ── X-RAY SLIDER (payload bay physical/schematic) ── */
+  (function() {
+    const xr = document.getElementById('xray');
+    if (!xr) return;
+    let dragging = false;
+    function setX(clientX) {
+      const r = xr.getBoundingClientRect();
+      const pct = Math.min(Math.max((clientX - r.left) / r.width, 0.04), 0.96);
+      xr.style.setProperty('--x', (pct * 100) + '%');
+    }
+    xr.addEventListener('pointerdown', (e) => { dragging = true; xr.setPointerCapture(e.pointerId); setX(e.clientX); });
+    xr.addEventListener('pointermove', (e) => { if (dragging) setX(e.clientX); });
+    xr.addEventListener('pointerup', () => { dragging = false; });
+    xr.addEventListener('pointercancel', () => { dragging = false; });
+    /* auto-sweep once when scrolled into view */
+    let swept = false;
+    const xio = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (en.isIntersecting && !swept) {
+          swept = true;
+          const t0 = performance.now(); const DUR = 1400;
+          function sweep(t) {
+            const p = Math.min((t - t0) / DUR, 1);
+            const eased = 1 - Math.pow(1 - p, 3);
+            xr.style.setProperty('--x', (100 - eased * 42) + '%');  /* 100% -> 58% */
+            if (p < 1 && !dragging) requestAnimationFrame(sweep);
+          }
+          requestAnimationFrame(sweep);
+        }
+      });
+    }, { threshold: 0.35 });
+    xio.observe(xr);
   })();
 
   /* ── Barcode ── */
