@@ -911,41 +911,24 @@
       layoutLines();
     }
 
-    function drawBlend(f) {
-      /* fractional frame with crossfade between neighbours */
-      const i0 = Math.min(Math.floor(f), COUNT - 1);
-      const i1 = Math.min(i0 + 1, COUNT - 1);
-      const mix = f - i0;
-      const a = frames[i0], b = frames[i1];
-      if (!a || !a.complete || !a.naturalWidth) return;
+    function draw(idx, force) {
+      if (idx === curIdx && !force) return;
+      const im = frames[idx];
+      if (!im || !im.complete || !im.naturalWidth) return;
+      curIdx = idx;
       const cw = canvas.width, ch = canvas.height;
-      const s = Math.max(cw / a.naturalWidth, ch / a.naturalHeight);
-      const dw = a.naturalWidth * s, dh = a.naturalHeight * s;
-      const ox = (cw - dw) / 2, oy = (ch - dh) / 2;
+      const s = Math.max(cw / im.naturalWidth, ch / im.naturalHeight);
+      const dw = im.naturalWidth * s, dh = im.naturalHeight * s;
       ctx.clearRect(0, 0, cw, ch);
-      ctx.globalAlpha = 1;
-      ctx.drawImage(a, ox, oy, dw, dh);
-      if (i1 !== i0 && mix > 0.01 && b.complete && b.naturalWidth) {
-        ctx.globalAlpha = mix;
-        ctx.drawImage(b, ox, oy, dw, dh);
-        ctx.globalAlpha = 1;
-      }
+      ctx.drawImage(im, (cw - dw) / 2, (ch - dh) / 2, dw, dh);
     }
-    function draw(idx, force) { drawBlend(idx); curIdx = idx; }
 
-    /* inertia-smoothed scrub */
-    let targetP = 0, smoothP = 0;
     function onScroll() {
       const r = wrap.getBoundingClientRect();
       const total = r.height - window.innerHeight;
-      targetP = Math.min(Math.max(-r.top / total, 0), 1);
-    }
-    function tick() {
-      smoothP += (targetP - smoothP) * 0.14;
-      if (Math.abs(targetP - smoothP) < 0.0004) smoothP = targetP;
-      const p = smoothP;
+      const p = Math.min(Math.max(-r.top / total, 0), 1);
       fill.style.width = (p * 100) + '%';
-      drawBlend(p * (COUNT - 1));
+      draw(Math.min(Math.floor(p * COUNT), COUNT - 1));
 
       /* title fade over first 14% of the orbit */
       const tf = Math.min(p / 0.14, 1);
@@ -953,20 +936,18 @@
       title.style.transform = 'translateY(' + (tf * 30) + 'px)';
       title.style.pointerEvents = tf >= 1 ? 'none' : 'auto';
 
-      /* callout windows follow the displayed frame */
+      /* callout windows */
       items.forEach((it) => {
         const onNow = p >= it.c.win[0] && p <= it.c.win[1];
         it.dot.classList.toggle('on', onNow);
         it.lab.classList.toggle('on', onNow);
         it.line.classList.toggle('on', onNow);
       });
-      requestAnimationFrame(tick);
     }
 
     window.addEventListener('resize', sizeCanvas);
     window.addEventListener('scroll', onScroll, { passive: true });
     sizeCanvas(); onScroll();
-    requestAnimationFrame(tick);
     setTimeout(layoutLines, 600); /* after webfonts settle */
   })();
 
